@@ -379,7 +379,10 @@ class SodsOds():
 					tc = TableCell(valuetype = 'string', stylename = style_name)
 				
 				# set ods text
-				tc.addElement(P(text = str(escape(c.text), 'utf-8')))
+				if type(c.text) == type(str()):
+					tc.addElement(P(text = escape(c.text)))
+				else:
+					tc.addElement(P(text = str(escape(c.text), 'utf-8')))
 				
 				tr.addElement(tc)
 
